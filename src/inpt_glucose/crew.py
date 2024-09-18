@@ -8,49 +8,40 @@ def load_config(file_path):
         return yaml.safe_load(file)
 
 def create_agents(llm):
-    agents_config = load_config('src/inpt_glucose/config/agents.yaml')
     agents = {}
-
-    for agent_name, agent_data in agents_config.items():
-        tools = []
-        if 'tools' in agent_data:
-            for tool in agent_data['tools']:
-                if tool == 'DuckDuckGoSearchRun':
-                    tools.append(DuckDuckGoSearchRun())
-        
+    agent_configs = load_config("src/inpt_glucose/config/agents.yaml")
+    for agent_name, agent_data in agent_configs.items():
         agents[agent_name] = Agent(
             role=agent_data['role'],
             goal=agent_data['goal'],
             backstory=agent_data['backstory'],
-            verbose=agent_data['verbose'],
-            allow_delegation=agent_data['allow_delegation'],
+            verbose=agent_data.get('verbose', False),
+            allow_delegation=agent_data.get('allow_delegation', True),
             llm=llm,
-            tools=tools
+            tools=[DuckDuckGoSearchRun()] if 'DuckDuckGoSearchRun' in agent_data.get('tools', []) else []
         )
-
     return agents
 
-def create_tasks(agents):
+def create_tasks(agents, progress_note):
     tasks_config = load_config('src/inpt_glucose/config/tasks.yaml')
     tasks = []
 
-    for task_data in tasks_config:
+    for task_name in sorted(tasks_config.keys()):
+        task_info = tasks_config[task_name]
         tasks.append(Task(
-            description=task_data['description'],
-            agent=agents[task_data['agent']]
+            description=f"{task_info['description']}\n\nProgress note: {progress_note}",
+            agent=agents[task_info['agent']]
         ))
 
     return tasks
 
 def run_crew(progress_note, llm):
     agents = create_agents(llm)
-    tasks = create_tasks(agents)
+    tasks = create_tasks(agents, progress_note)
 
-    glucose_inputs = {'progress note': progress_note}
     crew = Crew(
         agents=list(agents.values()),
         tasks=tasks,
-        memory=True,
         verbose=True
     )
-    return crew.kickoff(inputs=glucose_inputs)
+    return crew.kickoff()

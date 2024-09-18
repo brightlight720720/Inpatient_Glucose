@@ -1,0 +1,14 @@
+modules = ["python-3.10"]
+run = "streamlit run src/inpt_glucose/main.py"
+
+[nix]
+channel = "stable-24_05"
+
+[deployment]
+run = ["sh", "-c", "streamlit run src/inpt_glucose/main.py"]
+build = ["sh", "-c", "poetry lock --no-update  && poetry install"]
+deploymentTarget = "cloudrun"
+
+[[ports]]
+localPort = 8501
+externalPort = 80
