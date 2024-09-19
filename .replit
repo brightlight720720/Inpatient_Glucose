@@ -5,8 +5,8 @@ run = "streamlit run src/inpt_glucose/main.py"
 channel = "stable-24_05"
 
 [deployment]
-run = ["sh", "-c", "streamlit run src/inpt_glucose/main.py"]
-build = ["sh", "-c", "poetry lock --no-update  && poetry install"]
+run = ["sh", "-c", "streamlit run src/inpt_glucose/main.py --server.address 0.0.0.0 --server.headless true --server.enableCORS=false --server.enableWebsocketCompression=false"]
+build = ["sh", "-c", "poetry config virtualenvs.create true && poetry install "]
 deploymentTarget = "cloudrun"
 
 [[ports]]

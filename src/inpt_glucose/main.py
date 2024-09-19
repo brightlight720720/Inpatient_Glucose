@@ -33,10 +33,12 @@ def main():
         with st.spinner("Generating recommendations..."):
             # Run the crew with the progress note
             result = run_crew(progress_note, llm)
+           # raw_output = result.get("raw", "No recommendation found.")
 
         # Display the result
         st.subheader("Recommendations:")
         st.write(result)
+        #st.write(raw_output)
 
 if __name__ == "__main__":
     main()

@@ -22,6 +22,7 @@ def create_agents(llm):
         )
     return agents
 
+
 def create_tasks(agents, progress_note):
     tasks_config = load_config('src/inpt_glucose/config/tasks.yaml')
     tasks = []
@@ -30,7 +31,8 @@ def create_tasks(agents, progress_note):
         task_info = tasks_config[task_name]
         tasks.append(Task(
             description=f"{task_info['description']}\n\nProgress note: {progress_note}",
-            agent=agents[task_info['agent']]
+            agent=agents[task_info['agent']],
+            expected_output=task_info['expected_output']
         ))
 
     return tasks
@@ -44,4 +46,4 @@ def run_crew(progress_note, llm):
         tasks=tasks,
         verbose=True
     )
-    return crew.kickoff()
+    return crew.kickoff().raw

@@ -1,27 +1,19 @@
-task1:
-  description: >
-    Based on Diabetes Care in the Hospital: Standards of Care in Diabetes—2024, suggest glucose control for the patient admitted to the general ward. I will give you patient information about body weight, recent Hba1c, and current medication for glucose control. You will suggest insulin dose to keep glucose level between 140~180 mg/dl. Your final answer should include the dose of basal insulin and the rapid insulin dose for each meal and suggest daily caloric intake for the patient, and explain why.
-  expected_output: >
-    A comprehensive insulin dosage plan including basal and rapid insulin doses, daily caloric intake suggestion, and explanations for the recommendations.
-  agent: initial_dose
+initial_insulin_dose:
+  description: 'Based on the patient data, determine the initial insulin dose.'
+  agent: 'initial_dose'
+  expected_output: 'Insulin dose recommendation'
 
-task2:
-  description: >
-    I will give you recent events and glucose status in recent days. Please give me the dose of basal insulin suggestion for today. The dose adjustment should consider the response to previous basal insulin doses and any events that could cause hypoglycemia or hyperglycemia. You will suggest an insulin dose to keep glucose levels between 140~180 mg/dl. Your final answer should include the dose of basal insulin and an explanation of why you made that suggestion.
-  expected_output: >
-    A specific basal insulin dose recommendation with a detailed explanation of the reasoning behind the suggestion.
-  agent: basal
+basal_insulin_dose:
+  description: 'Based on the patient data, determine the appropriate basal insulin dose.'
+  agent: 'basal'
+  expected_output: 'Basal insulin dose recommendation'
 
-task3:
-  description: >
-    I will give you recent events and glucose status in recent days. Please give me the dose of rapid insulin suggestion for each meal of today. The dose adjustment should consider the response to the previous rapid insulin dose for each meal and any events that could cause hypoglycemia or hyperglycemia. You will suggest an insulin dose to keep glucose levels between 140~180 mg/dl. Your final answer should include the dose of rapid insulin for each meal and an explanation of why you made those suggestions.
-  expected_output: >
-    Rapid insulin dose recommendations for each meal of the day, accompanied by explanations for each suggestion.
-  agent: rapid
+rapid_insulin_dose:
+  description: 'Based on the patient data, determine the appropriate rapid insulin dose.'
+  agent: 'rapid'
+  expected_output: 'Rapid insulin dose recommendation'
 
-task4:
-  description: >
-    I will give you recent events and glucose status in recent days. Please detect any events or medications that could cause hypoglycemia or hyperglycemia, and provide suggestions on how to adjust insulin or anti-diabetic medication accordingly.
-  expected_output: >
-    A list of detected events or medications that may affect glucose levels, along with specific recommendations for adjusting insulin or anti-diabetic medications.
-  agent: warning
+hyper_hypoglycemia_warning:
+  description: 'Based on the patient data, detect any signs of impending hyperglycemia or hypoglycemia.'
+  agent: 'warning'
+  expected_output: 'Warnings for hyperglycemia or hypoglycemia'
