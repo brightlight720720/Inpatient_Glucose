@@ -29,7 +29,7 @@ click==8.1.7
 cohere==5.9.2
 coloredlogs==15.0.1
 crashtest==0.4.1
-crewai==0.61.0
+crewai==0.60.1
 cryptography==43.0.1
 dataclasses-json==0.6.7
 Deprecated==1.2.14
