@@ -3,16 +3,6 @@ from langchain.chat_models import ChatOpenAI
 from inpt_glucose.crew import run_crew
 
 
-import subprocess
-import sys
-
-def install(package):
-    """Ensure the package is installed."""
-    subprocess.check_call([sys.executable, "-m", "pip", "install", "--upgrade", package])
-
-# Ensure duckduckgo_search package is installed/upgraded.
-install("duckduckgo_search")
-
 
 def main():
     st.title("Inpatient Glucose Control Assistant")
