@@ -37,7 +37,7 @@ distlib==0.3.8
 distro==1.9.0
 docstring_parser==0.16
 #duckduckgo_search==6.2.12
-duckduckgo_search====2.6.0
+duckduckgo_search==2.6.0
 dulwich==0.21.7
 embedchain==0.1.121
 exceptiongroup==1.2.2
