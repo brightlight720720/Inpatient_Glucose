@@ -80,8 +80,7 @@ idna==3.10
 importlib_metadata==8.4.0
 importlib_resources==6.4.5
 iniconfig==2.0.0
--e #git+https://github.com/brightlight720720/Inpat#ient_Glucose@eeed44826cd24f27d8ebd31f923e4cfbc4#5f10cc#egg=inpt_glucose
-git+https://github.com/brightlight720720/Inpatient_Glucose@fd80a857e60dfd7890d600dc53e98deab3f987ca#egg=inpt_glucose
+-e git+https://github.com/brightlight720720/Inpatient_Glucose@fd80a857e60dfd7890d600dc53e98deab3f987ca#egg=inpt_glucose
 
 installer==0.7.0
 instructor==1.3.3
