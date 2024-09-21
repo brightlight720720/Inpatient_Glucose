@@ -2,6 +2,9 @@
 
 Welcome to the InptGlucose Crew project, powered by [crewAI](https://crewai.com). This template is designed to help you set up a multi-agent AI system with ease, leveraging the powerful and flexible framework provided by crewAI. Our goal is to enable your agents to collaborate effectively on complex tasks, maximizing their collective intelligence and capabilities.
 
+You can find the app at https://inpatient-glucose-brightlight7207.replit.app/ or https://inpatientglucose-4ihd9nt4vf6ywqtfbiu8ym.streamlit.app/![image](https://github.com/user-attachments/assets/2ab2d50f-3991-4b64-987d-7d9b9bc8f017)
+
+
 ## Installation
 
 Ensure you have Python >=3.10 <=3.13 installed on your system. This project uses [Poetry](https://python-poetry.org/) for dependency management and package handling, offering a seamless setup and execution experience.
